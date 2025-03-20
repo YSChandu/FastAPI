@@ -9,13 +9,12 @@ from nltk.sentiment.vader import SentimentIntensityAnalyzer
 from collections import Counter
 from sklearn.feature_extraction.text import TfidfVectorizer
 import re
-from fastapi.middleware.cors import CORSMiddleware # Import CORS
-# api.py (Top section fix)
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI
 from contextlib import asynccontextmanager
 import nltk
 
-nltk.data.path.append("/nltk_data")  # Explicit NLTK path
+nltk.download('vader_lexicon', download_dir='/opt/render/nltk_data')
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
